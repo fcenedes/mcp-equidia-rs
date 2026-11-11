@@ -1,0 +1,9 @@
+/target/
+/dist/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.cocoindex_code/
+__pycache__/

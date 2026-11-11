@@ -1,0 +1,56 @@
+name: Publish crate
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published GitHub release tag, for example v0.1.0
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: crates-io-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    environment: crates-io
+    timeout-minutes: 30
+    steps:
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.12"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          toolchain: 1.94.1
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
+      - name: Verify tag and completed GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          python3 scripts/release.py verify-tag "$RELEASE_TAG"
+          test "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" = "false"
+      - run: python3 scripts/generate_catalog.py --check
+      - run: cargo test --locked --all-features
+      - run: cargo package --locked
+      - run: python3 scripts/release.py audit-package
+      - name: Verify docs.rs configuration
+        env:
+          DOCS_RS: "1"
+          RUSTDOCFLAGS: --cfg docsrs -D warnings
+        run: cargo doc --locked --no-deps --lib --all-features --target x86_64-unknown-linux-gnu
+      - name: Publish verified crate
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          test -n "$CARGO_REGISTRY_TOKEN" || { echo 'Set CARGO_REGISTRY_TOKEN in the crates-io environment'; exit 1; }
+          cargo publish --locked

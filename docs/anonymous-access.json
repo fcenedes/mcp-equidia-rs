@@ -1,0 +1,401 @@
+{
+  "checked_at": "2026-11-11T18:19:24.904960+00:00",
+  "credentials_used": false,
+  "notes": [
+    "HTTP 404 on a nonexistent identifier is not evidence of an authentication requirement.",
+    "Responses were inspected for token-related application errors; no personal response content is retained."
+  ],
+  "operations": [
+    {
+      "tool": "equidia_get_broadcast_meetings_by_date_editorial",
+      "path": "/api/broadcast/meetings/{date}/editorial",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_broadcast_meetings_by_guid_editorial",
+      "path": "/api/broadcast/meetings/{guid}/editorial",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_broadcast_races_by_guid_editorial",
+      "path": "/api/broadcast/races/{guid}/editorial",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_broadcast_tickets_by_guid",
+      "path": "/api/broadcast/tickets/{guid}",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_desk_race_clipping",
+      "path": "/api/desk/race-clipping",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_hexaglobe_live_streams",
+      "path": "/api/hexaglobe/live-streams",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_daily_predictions",
+      "path": "/api/mobile/daily-predictions",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_horse",
+      "path": "/api/mobile/horse",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_horse_stats",
+      "path": "/api/mobile/horse-stats",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_last_programmings",
+      "path": "/api/mobile/last-programmings",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_live_streams",
+      "path": "/api/mobile/live-streams",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_meetings",
+      "path": "/api/mobile/meetings",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_race",
+      "path": "/api/mobile/race",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_race_quinte",
+      "path": "/api/mobile/race-quinte",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_races",
+      "path": "/api/mobile/races",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_races_by_family_discipline",
+      "path": "/api/mobile/races-by-family-discipline",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_races_by_highlight",
+      "path": "/api/mobile/races-by-highlight",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_races_by_meeting",
+      "path": "/api/mobile/races-by-meeting",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_races_by_meeting_number",
+      "path": "/api/mobile/races-by-meeting-number",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_races_pulling",
+      "path": "/api/mobile/races-pulling",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_runner",
+      "path": "/api/mobile/runner",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_runner_by_trainer_or_rider",
+      "path": "/api/mobile/runner-by-trainer-or-rider",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_runners",
+      "path": "/api/mobile/runners",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_runners_analyse",
+      "path": "/api/mobile/runners-analyse",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_runners_by_horse",
+      "path": "/api/mobile/runners-by-horse",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_mobile_social_prono",
+      "path": "/api/mobile/social-prono",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_ordonnanceur_batch_favorite_runner",
+      "path": "/api/ordonnanceur/batch-favorite-runner",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_pro_live_streams",
+      "path": "/api/pro/live-streams",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_epg",
+      "path": "/api/tv/epg",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_last_episodes",
+      "path": "/api/tv/last-episodes",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_last_quinte",
+      "path": "/api/tv/last-quinte",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_live_streams",
+      "path": "/api/tv/live-streams",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_meetings",
+      "path": "/api/tv/meetings",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_race",
+      "path": "/api/tv/race",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_races_by_meeting",
+      "path": "/api/tv/races-by-meeting",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_tv_shows",
+      "path": "/api/tv/shows",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_articles",
+      "path": "/api/v2/articles",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_braze_subscription_user_status",
+      "path": "/api/v2/braze-subscription-user-status",
+      "http_status": 404,
+      "included": false
+    },
+    {
+      "tool": "equidia_get_v2_categories",
+      "path": "/api/v2/categories",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_editorial_contents",
+      "path": "/api/v2/editorial-contents",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_image_parts",
+      "path": "/api/v2/image-parts",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_image_parts_by_id",
+      "path": "/api/v2/image-parts/{id}",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_medias",
+      "path": "/api/v2/medias",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_meetings",
+      "path": "/api/v2/meetings",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_meetings_by_guid",
+      "path": "/api/v2/meetings/{guid}",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_notifications",
+      "path": "/api/v2/notifications",
+      "http_status": 404,
+      "application_response": {
+        "error": "Token not provided"
+      },
+      "included": false
+    },
+    {
+      "tool": "equidia_get_v2_notifications_users_by_guid",
+      "path": "/api/v2/notifications/users/{guid}",
+      "http_status": 200,
+      "included": false,
+      "note": "Excluded because the contract documents a token requirement; an empty nonexistent-user response is inconclusive."
+    },
+    {
+      "tool": "equidia_get_v2_optiweb",
+      "path": "/api/v2/optiweb",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_pre_runners",
+      "path": "/api/v2/pre-runners",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_rundowns",
+      "path": "/api/v2/rundowns",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_rundowns_pdf_by_uuid",
+      "path": "/api/v2/rundowns-pdf/{uuid}",
+      "http_status": 404,
+      "included": false,
+      "note": "Excluded at user request; outside the current server scope."
+    },
+    {
+      "tool": "equidia_get_v2_rundowns_by_uuid",
+      "path": "/api/v2/rundowns/{uuid}",
+      "http_status": 200,
+      "included": true,
+      "note": "Confirmed with a valid identifier from its public collection."
+    },
+    {
+      "tool": "equidia_get_v2_runners",
+      "path": "/api/v2/runners",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_runners_by_uuid",
+      "path": "/api/v2/runners/{uuid}",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_segments",
+      "path": "/api/v2/segments",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_segments_by_id",
+      "path": "/api/v2/segments/{id}",
+      "http_status": 200,
+      "included": true,
+      "note": "Confirmed with a valid identifier from its public collection."
+    },
+    {
+      "tool": "equidia_get_v2_stable_noise",
+      "path": "/api/v2/stable-noise",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_subscriptions",
+      "path": "/api/v2/subscriptions",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_subscriptions_by_id",
+      "path": "/api/v2/subscriptions/{id}",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_tags",
+      "path": "/api/v2/tags",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_user_optiwebs",
+      "path": "/api/v2/user-optiwebs",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_users",
+      "path": "/api/v2/users",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_v2_users_by_uuid",
+      "path": "/api/v2/users/{uuid}",
+      "http_status": 200,
+      "included": true
+    },
+    {
+      "tool": "equidia_get_web_article_mobile",
+      "path": "/api/web/article-mobile",
+      "http_status": 200,
+      "included": true
+    }
+  ]
+}

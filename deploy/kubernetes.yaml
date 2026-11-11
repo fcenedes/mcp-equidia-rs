@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-equidia
+spec:
+  # MCP sessions are process-local. Keep one replica unless the ingress provides
+  # session-aware routing and session loss during rollout is acceptable.
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-equidia
+  template:
+    metadata:
+      labels:
+        app: mcp-equidia
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: mcp
+          image: ghcr.io/fcenedes/mcp-equidia-rs:0.1.0
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            - name: MCP_HTTP_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-equidia
+                  key: token
+            - name: MCP_METRICS_ENABLED
+              value: "true"
+            - name: MCP_HTTP_ALLOWED_HOSTS
+              value: mcp-equidia,mcp-equidia.default.svc.cluster.local
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 2
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-equidia
+spec:
+  selector:
+    app: mcp-equidia
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http

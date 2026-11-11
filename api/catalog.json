@@ -1,0 +1,3988 @@
+{
+  "source": "https://apiv2.equidia.fr/api/docs.json",
+  "retrieved": "2026-11-11",
+  "aliases": {
+    "equidia_races": "equidia_get_mobile_races",
+    "equidia_meetings": "equidia_get_mobile_meetings",
+    "equidia_race": "equidia_get_mobile_race",
+    "equidia_runners": "equidia_get_mobile_runners",
+    "equidia_horse": "equidia_get_mobile_horse",
+    "equidia_horse_stats": "equidia_get_mobile_horse_stats",
+    "equidia_predictions": "equidia_get_mobile_daily_predictions",
+    "equidia_live_streams": "equidia_get_mobile_live_streams",
+    "equidia_tv_schedule": "equidia_get_tv_epg",
+    "equidia_articles": "equidia_get_v2_articles",
+    "equidia_tags": "equidia_get_v2_tags"
+  },
+  "operations": [
+    {
+      "name": "equidia_get_broadcast_meetings_by_date_editorial",
+      "method": "GET",
+      "path": "/api/broadcast/meetings/{date}/editorial",
+      "operation_id": "_api_/broadcast/meetings/{date}/editorial_get_collection",
+      "tags": [
+        "Meeting"
+      ],
+      "description": "GET /api/broadcast/meetings/{date}/editorial. Retrieves the collection of Meeting resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Meeting identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [
+          "date"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_broadcast_meetings_by_guid_editorial",
+      "method": "GET",
+      "path": "/api/broadcast/meetings/{guid}/editorial",
+      "operation_id": "_api_/broadcast/meetings/{guid}/editorial_get",
+      "tags": [
+        "Meeting"
+      ],
+      "description": "GET /api/broadcast/meetings/{guid}/editorial. Retrieves a Meeting resource.",
+      "parameters": [
+        {
+          "name": "guid",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "description": "Meeting identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "guid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_broadcast_races_by_guid_editorial",
+      "method": "GET",
+      "path": "/api/broadcast/races/{guid}/editorial",
+      "operation_id": "_api_/broadcast/races/{guid}/editorial_get",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/broadcast/races/{guid}/editorial. Retrieves a Race resource.",
+      "parameters": [
+        {
+          "name": "guid",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "description": "Race identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "guid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_broadcast_tickets_by_guid",
+      "method": "GET",
+      "path": "/api/broadcast/tickets/{guid}",
+      "operation_id": "_api_/broadcast/tickets/{guid}_get_collection",
+      "tags": [
+        "Ticket"
+      ],
+      "description": "GET /api/broadcast/tickets/{guid}. Retrieves the collection of Ticket resources.",
+      "parameters": [
+        {
+          "name": "betTypeCode",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "status",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "guid",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "betTypeCode": {
+            "type": "string",
+            "description": "Code du type de pari (ex: 27 pour le Quinté+) : filtre les tickets et les betNotes de la course"
+          },
+          "status": {
+            "type": "string",
+            "description": "all : renvoie aussi les tickets non publiés (brouillons), sinon uniquement les tickets publiés"
+          },
+          "guid": {
+            "type": "string",
+            "description": "Ticket identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [
+          "guid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_desk_race_clipping",
+      "method": "GET",
+      "path": "/api/desk/race-clipping",
+      "operation_id": "_api_/desk/race-clipping_get_collection",
+      "tags": [
+        "Meeting"
+      ],
+      "description": "GET /api/desk/race-clipping. Retrieves the collection of Meeting resources.",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_hexaglobe_live_streams",
+      "method": "GET",
+      "path": "/api/hexaglobe/live-streams",
+      "operation_id": "_api_/hexaglobe/live-streams_get_collection",
+      "tags": [
+        "Stream"
+      ],
+      "description": "GET /api/hexaglobe/live-streams. Retrieves the collection of Stream resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_daily_predictions",
+      "method": "GET",
+      "path": "/api/mobile/daily-predictions",
+      "operation_id": "_api_/mobile/daily-predictions_get_collection",
+      "tags": [
+        "DailyPrediction"
+      ],
+      "description": "GET /api/mobile/daily-predictions. Read Equidia's editorial predictions for a date. The upstream returns a dailies object.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_horse",
+      "method": "GET",
+      "path": "/api/mobile/horse",
+      "operation_id": "_api_/mobile/horse_get_collection",
+      "tags": [
+        "Horse"
+      ],
+      "description": "GET /api/mobile/horse. Read a horse profile by UUID or slug.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "slug",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_horse_stats",
+      "method": "GET",
+      "path": "/api/mobile/horse-stats",
+      "operation_id": "_api_/mobile/horse-stats_get_collection",
+      "tags": [
+        "Horse"
+      ],
+      "description": "GET /api/mobile/horse-stats. Read horse statistics by UUID or slug.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "slug",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_last_programmings",
+      "method": "GET",
+      "path": "/api/mobile/last-programmings",
+      "operation_id": "_api_/mobile/last-programmings_get_collection",
+      "tags": [
+        "Programming"
+      ],
+      "description": "GET /api/mobile/last-programmings. Retrieves the collection of Programming resources.",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_live_streams",
+      "method": "GET",
+      "path": "/api/mobile/live-streams",
+      "operation_id": "_api_/mobile/live-streams_get_collection",
+      "tags": [
+        "Stream"
+      ],
+      "description": "GET /api/mobile/live-streams. Read live channel and meeting stream metadata for a date. Does not fetch or play media.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_meetings",
+      "method": "GET",
+      "path": "/api/mobile/meetings",
+      "operation_id": "_api_/mobile/meetings_get_collection",
+      "tags": [
+        "Meeting"
+      ],
+      "description": "GET /api/mobile/meetings. List race meetings by date, including racecourse, meeting number, status and weather.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_race",
+      "method": "GET",
+      "path": "/api/mobile/race",
+      "operation_id": "_api_/mobile/race_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/race. Get race details, results and available replay metadata by race UUID or GUID.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "guid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "guid": {
+            "type": "string",
+            "description": "Format: 20220701_AUT_1"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_race_quinte",
+      "method": "GET",
+      "path": "/api/mobile/race-quinte",
+      "operation_id": "_api_/mobile/race-quinte_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/race-quinte. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_races",
+      "method": "GET",
+      "path": "/api/mobile/races",
+      "operation_id": "_api_/mobile/races_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/races. List races by date, meeting/race number or discipline; includes results when available. Use UUID or GUID values for related lookups.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "meeting-number",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-number",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "is-quinte",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "with-replay",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "family-discipline",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-start-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-race-number",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "meeting-number": {
+            "type": "string"
+          },
+          "race-number": {
+            "type": "string"
+          },
+          "is-quinte": {
+            "type": "boolean"
+          },
+          "with-replay": {
+            "type": "string"
+          },
+          "family-discipline": {
+            "type": "string",
+            "enum": [
+              "FLAT",
+              "JUMP",
+              "HARNESS",
+              "SADDLED"
+            ]
+          },
+          "order-by-start-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "order-by-race-number": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_races_by_family_discipline",
+      "method": "GET",
+      "path": "/api/mobile/races-by-family-discipline",
+      "operation_id": "_api_/mobile/races-by-family-discipline_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/races-by-family-discipline. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "family-discipline",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-start-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "family-discipline": {
+            "type": "string",
+            "enum": [
+              "FLAT",
+              "JUMP",
+              "HARNESS",
+              "SADDLED"
+            ]
+          },
+          "order-by-start-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_races_by_highlight",
+      "method": "GET",
+      "path": "/api/mobile/races-by-highlight",
+      "operation_id": "_api_/mobile/races-by-highlight_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/races-by-highlight. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-highlight",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "order-by-highlight": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_races_by_meeting",
+      "method": "GET",
+      "path": "/api/mobile/races-by-meeting",
+      "operation_id": "_api_/mobile/races-by-meeting_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/races-by-meeting. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-start-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "order-by-start-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_races_by_meeting_number",
+      "method": "GET",
+      "path": "/api/mobile/races-by-meeting-number",
+      "operation_id": "_api_/mobile/races-by-meeting-number_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/races-by-meeting-number. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "meeting-number",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-start-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "meeting-number": {
+            "type": "string"
+          },
+          "order-by-start-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_races_pulling",
+      "method": "GET",
+      "path": "/api/mobile/races-pulling",
+      "operation_id": "_api_/mobile/races-pulling_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/races-pulling. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-start-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "order-by-start-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_runner",
+      "method": "GET",
+      "path": "/api/mobile/runner",
+      "operation_id": "_api_/mobile/runner_get_collection",
+      "tags": [
+        "Runner"
+      ],
+      "description": "GET /api/mobile/runner. Retrieves the collection of Runner resources.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_runner_by_trainer_or_rider",
+      "method": "GET",
+      "path": "/api/mobile/runner-by-trainer-or-rider",
+      "operation_id": "_api_/mobile/runner-by-trainer-or-rider_get_collection",
+      "tags": [
+        "Runner"
+      ],
+      "description": "GET /api/mobile/runner-by-trainer-or-rider. Retrieves the collection of Runner resources.",
+      "parameters": [
+        {
+          "name": "trainer-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "rider-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "trainer-uuid": {
+            "type": "string"
+          },
+          "rider-uuid": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_runners",
+      "method": "GET",
+      "path": "/api/mobile/runners",
+      "operation_id": "_api_/mobile/runners_get_collection",
+      "tags": [
+        "Runner"
+      ],
+      "description": "GET /api/mobile/runners. List race runners by race UUID/GUID, or filter by horse, rider or trainer. Includes horse and connection identifiers.",
+      "parameters": [
+        {
+          "name": "race-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-guid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "horse-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "rider-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "trainer-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "race-uuid": {
+            "type": "string"
+          },
+          "race-guid": {
+            "type": "string"
+          },
+          "horse-uuid": {
+            "type": "string"
+          },
+          "rider-uuid": {
+            "type": "string"
+          },
+          "trainer-uuid": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_runners_analyse",
+      "method": "GET",
+      "path": "/api/mobile/runners-analyse",
+      "operation_id": "_api_/mobile/runners-analyse_get_collection",
+      "tags": [
+        "Runner"
+      ],
+      "description": "GET /api/mobile/runners-analyse. Read runner analysis for a race UUID or GUID.",
+      "parameters": [
+        {
+          "name": "race-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-guid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "race-uuid": {
+            "type": "string"
+          },
+          "race-guid": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_runners_by_horse",
+      "method": "GET",
+      "path": "/api/mobile/runners-by-horse",
+      "operation_id": "_api_/mobile/runners-by-horse_get_collection",
+      "tags": [
+        "Runner"
+      ],
+      "description": "GET /api/mobile/runners-by-horse. Read a horse's previous race performances using horse-uuid, with optional comparison filters.",
+      "parameters": [
+        {
+          "name": "horse-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "rider-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "trainer-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-to-compare",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-turn",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-distance",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-racecourse",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-guid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "horse-uuid": {
+            "type": "string"
+          },
+          "rider-uuid": {
+            "type": "string"
+          },
+          "trainer-uuid": {
+            "type": "string"
+          },
+          "same-to-compare": {
+            "type": "string",
+            "description": "Format: 20220701_AUT_1"
+          },
+          "same-turn": {
+            "type": "boolean",
+            "description": "same-to-compare doit etre renseigné pour avoir des resultats"
+          },
+          "same-distance": {
+            "type": "boolean",
+            "description": "same-to-compare doit etre renseigné pour avoir des resultats"
+          },
+          "same-racecourse": {
+            "type": "boolean",
+            "description": "same-to-compare doit etre renseigné pour avoir des resultats"
+          },
+          "race-uuid": {
+            "type": "string"
+          },
+          "race-guid": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [
+          "horse-uuid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_mobile_social_prono",
+      "method": "GET",
+      "path": "/api/mobile/social-prono",
+      "operation_id": "_api_/mobile/social-prono_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/mobile/social-prono. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_ordonnanceur_batch_favorite_runner",
+      "method": "GET",
+      "path": "/api/ordonnanceur/batch-favorite-runner",
+      "operation_id": "_api_/ordonnanceur/batch-favorite-runner_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/ordonnanceur/batch-favorite-runner. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-start-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "order-by-start-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_pro_live_streams",
+      "method": "GET",
+      "path": "/api/pro/live-streams",
+      "operation_id": "_api_/pro/live-streams_get_collection",
+      "tags": [
+        "Stream"
+      ],
+      "description": "GET /api/pro/live-streams. Retrieves the collection of Stream resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_epg",
+      "method": "GET",
+      "path": "/api/tv/epg",
+      "operation_id": "_api_/tv/epg_get_collection",
+      "tags": [
+        "Programming"
+      ],
+      "description": "GET /api/tv/epg. Read the TV programme schedule by date and optional Equidia channel.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "stream",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "stream": {
+            "type": "string",
+            "enum": [
+              "equidia-live",
+              "equidia-racingtrot",
+              "equidia-racinggalop"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_last_episodes",
+      "method": "GET",
+      "path": "/api/tv/last-episodes",
+      "operation_id": "_api_/tv/last-episodes_get_collection",
+      "tags": [
+        "Programming"
+      ],
+      "description": "GET /api/tv/last-episodes. Retrieves the collection of Programming resources.",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_last_quinte",
+      "method": "GET",
+      "path": "/api/tv/last-quinte",
+      "operation_id": "_api_/tv/last-quinte_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/tv/last-quinte. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_live_streams",
+      "method": "GET",
+      "path": "/api/tv/live-streams",
+      "operation_id": "_api_/tv/live-streams_get_collection",
+      "tags": [
+        "Stream"
+      ],
+      "description": "GET /api/tv/live-streams. Retrieves the collection of Stream resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_meetings",
+      "method": "GET",
+      "path": "/api/tv/meetings",
+      "operation_id": "_api_/tv/meetings_get_collection",
+      "tags": [
+        "Meeting"
+      ],
+      "description": "GET /api/tv/meetings. Retrieves the collection of Meeting resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_race",
+      "method": "GET",
+      "path": "/api/tv/race",
+      "operation_id": "_api_/tv/race_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/tv/race. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "guid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "guid": {
+            "type": "string",
+            "description": "Format: 20220701_AUT_1"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_races_by_meeting",
+      "method": "GET",
+      "path": "/api/tv/races-by-meeting",
+      "operation_id": "_api_/tv/races-by-meeting_get_collection",
+      "tags": [
+        "Race"
+      ],
+      "description": "GET /api/tv/races-by-meeting. Retrieves the collection of Race resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "meeting-number",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-start-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "meeting-number": {
+            "type": "string"
+          },
+          "order-by-start-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_tv_shows",
+      "method": "GET",
+      "path": "/api/tv/shows",
+      "operation_id": "_api_/tv/shows_get_collection",
+      "tags": [
+        "Program"
+      ],
+      "description": "GET /api/tv/shows. Retrieves the collection of Program resources.",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_articles",
+      "method": "GET",
+      "path": "/api/v2/articles",
+      "operation_id": "_api_/v2/articles_get_collection",
+      "tags": [
+        "Article"
+      ],
+      "description": "GET /api/v2/articles. List editorial articles, optionally filtering by tag UUIDs.",
+      "parameters": [
+        {
+          "name": "tag_uuids",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "tag_uuids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Get articles from tag uuids"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_categories",
+      "method": "GET",
+      "path": "/api/v2/categories",
+      "operation_id": "_api_/v2/categories_get_collection",
+      "tags": [
+        "Category"
+      ],
+      "description": "GET /api/v2/categories. Retrieves the collection of Category resources.",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_editorial_contents",
+      "method": "GET",
+      "path": "/api/v2/editorial-contents",
+      "operation_id": "_api_/v2/editorial-contents_get_collection",
+      "tags": [
+        "EditorialContent"
+      ],
+      "description": "GET /api/v2/editorial-contents. Retrieves the collection of EditorialContent resources.",
+      "parameters": [
+        {
+          "name": "races",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "categories",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "races": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Format: 2022-07-01/R1/C1"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_image_parts",
+      "method": "GET",
+      "path": "/api/v2/image-parts",
+      "operation_id": "_api_/v2/image-parts_get_collection",
+      "tags": [
+        "ImagePart"
+      ],
+      "description": "GET /api/v2/image-parts. Retrieves the collection of ImagePart resources.",
+      "parameters": [
+        {
+          "name": "type",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_image_parts_by_id",
+      "method": "GET",
+      "path": "/api/v2/image-parts/{id}",
+      "operation_id": "_api_/v2/image-parts/{id}_get",
+      "tags": [
+        "ImagePart"
+      ],
+      "description": "GET /api/v2/image-parts/{id}. Retrieves a ImagePart resource.",
+      "parameters": [
+        {
+          "name": "id",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ImagePart identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_medias",
+      "method": "GET",
+      "path": "/api/v2/medias",
+      "operation_id": "getMedias",
+      "tags": [
+        "Medias"
+      ],
+      "description": "GET /api/v2/medias. Retrieve medias data",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "category",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-published-at",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "tags",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "disciplines",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "kinds",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "highlight",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 100
+          },
+          "category": {
+            "type": "string",
+            "description": "Category slug of the media to filter"
+          },
+          "order-by-published-at": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "default": "DESC"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Filter by Tag slugs, pass multiple values for multiple tags"
+          },
+          "disciplines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Filter by Race discipline, pass multiple values for multiple disciplines"
+          },
+          "kinds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Filter by kind, pass multiple values for multiple kinds (\"article\" | \"emission\" | \"replay\" | \"podcast\")"
+          },
+          "highlight": {
+            "type": "boolean",
+            "enum": [
+              true
+            ],
+            "description": "filter by Highlight is not null"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_meetings",
+      "method": "GET",
+      "path": "/api/v2/meetings",
+      "operation_id": "_api_/v2/meetings_get_collection",
+      "tags": [
+        "Meeting"
+      ],
+      "description": "GET /api/v2/meetings. Retrieves the collection of Meeting resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "date-from",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "date-to",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "racecourse-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "racecourse-code",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "is-premium",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "is-csi",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "is-csi-pmu",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "is-pmh",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "date-from": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd, 'date-to' doit etre renseigné pour avoir des resultats",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "date-to": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd, 'date-from' doit etre renseigné pour avoir des resultats",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "racecourse-uuid": {
+            "type": "string"
+          },
+          "racecourse-code": {
+            "type": "string"
+          },
+          "is-premium": {
+            "type": "boolean"
+          },
+          "is-csi": {
+            "type": "boolean"
+          },
+          "is-csi-pmu": {
+            "type": "boolean"
+          },
+          "is-pmh": {
+            "type": "boolean"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_meetings_by_guid",
+      "method": "GET",
+      "path": "/api/v2/meetings/{guid}",
+      "operation_id": "_api_/v2/meetings/{guid}_get_collection",
+      "tags": [
+        "Meeting"
+      ],
+      "description": "GET /api/v2/meetings/{guid}. Retrieves the collection of Meeting resources.",
+      "parameters": [
+        {
+          "name": "guid",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "description": "Meeting identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [
+          "guid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_optiweb",
+      "method": "GET",
+      "path": "/api/v2/optiweb",
+      "operation_id": "getOptiwebApi",
+      "tags": [
+        "Optiweb"
+      ],
+      "description": "GET /api/v2/optiweb. Get data from Optiweb API",
+      "parameters": [
+        {
+          "name": "start",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "end",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "activities",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date",
+            "description": "Start date in YYYY-MM-DD format",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "end": {
+            "type": "string",
+            "format": "date",
+            "description": "End date in YYYY-MM-DD format",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Filter by activity, pass multiple values for multiple activity. Ex: JRI - Tournage divers"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_pre_runners",
+      "method": "GET",
+      "path": "/api/v2/pre-runners",
+      "operation_id": "_api_/v2/pre-runners_get_collection",
+      "tags": [
+        "PreRunners"
+      ],
+      "description": "GET /api/v2/pre-runners. Retrieves the collection of PreRunners resources.",
+      "parameters": [
+        {
+          "name": "meeting-date-pre-runners",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "meeting-number-pre-runners",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-number-pre-runners",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "meeting-name-pre-runners",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-long-name-pre-runners",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "horse-name-pre-runners",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "meeting-date-pre-runners": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "meeting-number-pre-runners": {
+            "type": "string"
+          },
+          "race-number-pre-runners": {
+            "type": "string"
+          },
+          "meeting-name-pre-runners": {
+            "type": "string"
+          },
+          "race-long-name-pre-runners": {
+            "type": "string"
+          },
+          "horse-name-pre-runners": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_rundowns",
+      "method": "GET",
+      "path": "/api/v2/rundowns",
+      "operation_id": "_api_/v2/rundowns_get_collection",
+      "tags": [
+        "Rundown"
+      ],
+      "description": "GET /api/v2/rundowns. Retrieves the collection of Rundown resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "order-by-date": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_rundowns_by_uuid",
+      "method": "GET",
+      "path": "/api/v2/rundowns/{uuid}",
+      "operation_id": "_api_/v2/rundowns/{uuid}_get",
+      "tags": [
+        "Rundown"
+      ],
+      "description": "GET /api/v2/rundowns/{uuid}. Retrieves a Rundown resource.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "description": "Rundown identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "uuid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_runners",
+      "method": "GET",
+      "path": "/api/v2/runners",
+      "operation_id": "_api_/v2/runners_get_collection",
+      "tags": [
+        "Runner"
+      ],
+      "description": "GET /api/v2/runners. Retrieves the collection of Runner resources.",
+      "parameters": [
+        {
+          "name": "race-guid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "trainer-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "rider-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "horse-uuid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-to-compare",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-turn",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-distance",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "same-racecourse",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "race-guid": {
+            "type": "string"
+          },
+          "race-uuid": {
+            "type": "string"
+          },
+          "trainer-uuid": {
+            "type": "string"
+          },
+          "rider-uuid": {
+            "type": "string"
+          },
+          "horse-uuid": {
+            "type": "string"
+          },
+          "same-to-compare": {
+            "type": "string",
+            "description": "Format: 20220701_AUT_1"
+          },
+          "same-turn": {
+            "type": "boolean",
+            "description": "same-to-compare doit etre renseigné pour avoir des resultats"
+          },
+          "same-distance": {
+            "type": "boolean",
+            "description": "same-to-compare doit etre renseigné pour avoir des resultats"
+          },
+          "same-racecourse": {
+            "type": "boolean",
+            "description": "same-to-compare doit etre renseigné pour avoir des resultats"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_runners_by_uuid",
+      "method": "GET",
+      "path": "/api/v2/runners/{uuid}",
+      "operation_id": "_api_/v2/runners/{uuid}_get",
+      "tags": [
+        "Runner"
+      ],
+      "description": "GET /api/v2/runners/{uuid}. Retrieves a Runner resource.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "description": "Runner identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "uuid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_segments",
+      "method": "GET",
+      "path": "/api/v2/segments",
+      "operation_id": "_api_/v2/segments_get_collection",
+      "tags": [
+        "Segment"
+      ],
+      "description": "GET /api/v2/segments. Retrieves the collection of Segment resources.",
+      "parameters": [
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "order-by-is-active",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "is-active",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "name",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "type",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "order-by-is-active": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "description": "is DESC by default if empty"
+          },
+          "is-active": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_segments_by_id",
+      "method": "GET",
+      "path": "/api/v2/segments/{id}",
+      "operation_id": "_api_/v2/segments/{id}_get",
+      "tags": [
+        "Segment"
+      ],
+      "description": "GET /api/v2/segments/{id}. Retrieves a Segment resource.",
+      "parameters": [
+        {
+          "name": "id",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Segment identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_stable_noise",
+      "method": "GET",
+      "path": "/api/v2/stable-noise",
+      "operation_id": "getStableNoise",
+      "tags": [
+        "InterviewNews"
+      ],
+      "description": "GET /api/v2/stable-noise. Retrieve stable noise data",
+      "parameters": [
+        {
+          "name": "type",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "meeting-number",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "date",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "race-guid",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Filter by type"
+          },
+          "meeting-number": {
+            "type": "string",
+            "description": "Filter by meeting number"
+          },
+          "date": {
+            "type": "string",
+            "description": "Filter by date"
+          },
+          "race-guid": {
+            "type": "string",
+            "description": "Filter by race guid"
+          },
+          "items-per-page": {
+            "type": "integer",
+            "description": "Set number of item returned",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 10
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_subscriptions",
+      "method": "GET",
+      "path": "/api/v2/subscriptions",
+      "operation_id": "_api_/v2/subscriptions_get_collection",
+      "tags": [
+        "Subscription"
+      ],
+      "description": "GET /api/v2/subscriptions. Retrieves the collection of Subscription resources.",
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_subscriptions_by_id",
+      "method": "GET",
+      "path": "/api/v2/subscriptions/{id}",
+      "operation_id": "_api_/v2/subscriptions/{id}_get",
+      "tags": [
+        "Subscription"
+      ],
+      "description": "GET /api/v2/subscriptions/{id}. Retrieves a Subscription resource.",
+      "parameters": [
+        {
+          "name": "id",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Subscription identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_tags",
+      "method": "GET",
+      "path": "/api/v2/tags",
+      "operation_id": "_api_/v2/tags_get_collection",
+      "tags": [
+        "Tag"
+      ],
+      "description": "GET /api/v2/tags. Read tag metadata, optionally selecting UUIDs.",
+      "parameters": [
+        {
+          "name": "uuids",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Get Tags info from tag uuids"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_user_optiwebs",
+      "method": "GET",
+      "path": "/api/v2/user-optiwebs",
+      "operation_id": "_api_/v2/user-optiwebs_get_collection",
+      "tags": [
+        "UserOptiweb"
+      ],
+      "description": "GET /api/v2/user-optiwebs. Retrieves the collection of UserOptiweb resources.",
+      "parameters": [
+        {
+          "name": "start",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "end",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "activities",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "end": {
+            "type": "string",
+            "description": "Format: yyyy-mm-dd",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_users",
+      "method": "GET",
+      "path": "/api/v2/users",
+      "operation_id": "_api_/v2/users_get_collection",
+      "tags": [
+        "User"
+      ],
+      "description": "GET /api/v2/users. Retrieves the collection of User resources.",
+      "parameters": [
+        {
+          "name": "firstname",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "lastname",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "is-journalist",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "is-journalist": {
+            "type": "boolean"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_v2_users_by_uuid",
+      "method": "GET",
+      "path": "/api/v2/users/{uuid}",
+      "operation_id": "_api_/v2/users/{uuid}_get",
+      "tags": [
+        "User"
+      ],
+      "description": "GET /api/v2/users/{uuid}. Retrieves a User resource.",
+      "parameters": [
+        {
+          "name": "uuid",
+          "location": "path",
+          "explode": false,
+          "style": "simple"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "description": "User identifier",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]*$"
+          }
+        },
+        "required": [
+          "uuid"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    },
+    {
+      "name": "equidia_get_web_article_mobile",
+      "method": "GET",
+      "path": "/api/web/article-mobile",
+      "operation_id": "_api_/web/article-mobile_get_collection",
+      "tags": [
+        "Article"
+      ],
+      "description": "GET /api/web/article-mobile. Retrieves the collection of Article resources.",
+      "parameters": [
+        {
+          "name": "slug",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        },
+        {
+          "name": "items-per-page",
+          "location": "query",
+          "explode": false,
+          "style": "form"
+        }
+      ],
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The collection page number",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "items-per-page": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "description": "The number of items per page",
+            "maximum": 100
+          }
+        },
+        "required": [
+          "slug"
+        ],
+        "additionalProperties": false
+      },
+      "has_body": false
+    }
+  ]
+}

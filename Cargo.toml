@@ -1,0 +1,51 @@
+[package]
+name = "mcp-equidia-rs"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Equidia horse racing API CLI and MCP server with stdio and Streamable HTTP"
+repository = "https://github.com/fcenedes/mcp-equidia-rs"
+homepage = "https://github.com/fcenedes/mcp-equidia-rs#readme"
+documentation = "https://docs.rs/mcp-equidia-rs/latest/mcp_equidia_rs/"
+license = "MIT"
+readme = "README.md"
+keywords = ["mcp", "equidia", "horse-racing", "cli"]
+categories = ["command-line-utilities", "api-bindings"]
+include = ["/src/**", "/api/**", "/docs/**", "/tests/**", "/scripts/**", "/deploy/**", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE", "/NOTICE", "/CHANGELOG.md", "/.env.example", "/Dockerfile", "/.dockerignore"]
+
+[package.metadata.docs.rs]
+all-features = true
+default-target = "x86_64-unknown-linux-gnu"
+targets = []
+
+[dependencies]
+anyhow = "1"
+axum = "0.8"
+axum-server = { version = "0.8", features = ["tls-rustls-no-provider"] }
+clap = { version = "4.5", features = ["string", "derive"] }
+dotenvy = "0.15"
+httpdate = "1"
+jsonschema = { version = "0.60", default-features = false }
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls", "query", "stream"] }
+rmcp = { version = "3.8", default-features = false, features = ["server", "transport-io", "transport-streamable-http-server"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+rustls-pki-types = { version = "1", features = ["std"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "net", "io-util", "io-std", "process", "time", "sync"] }
+tokio-util = "0.7"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+[dev-dependencies]
+futures-util = "0.3"
+tempfile = "3"
+rcgen = "0.14"
+
+[profile.release]
+lto = "thin"
+strip = true
+
+[lints.rust]
+unsafe_code = "forbid"

@@ -1,0 +1,13 @@
+services:
+  equidia:
+    image: ${EQUIDIA_IMAGE:-ghcr.io/fcenedes/mcp-equidia-rs:0.1.0}
+    init: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      MCP_HTTP_TOKEN: ${MCP_HTTP_TOKEN:?Set a bearer token for the MCP listener}
+      MCP_METRICS_ENABLED: "true"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

@@ -1,0 +1,162 @@
+{
+  "checked_at": "2026-11-11T18:20:54.067658+00:00",
+  "racing_date": "2026-11-11",
+  "origin": "https://apiv2.equidia.fr",
+  "credentials_used": false,
+  "ok": true,
+  "checks": [
+    {
+      "tool": "equidia_meetings",
+      "ok": true,
+      "status": 200,
+      "bytes": 633,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_races",
+      "ok": true,
+      "status": 200,
+      "bytes": 2215,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_predictions",
+      "ok": true,
+      "status": 200,
+      "bytes": 17514,
+      "data_type": "dict"
+    },
+    {
+      "tool": "equidia_live_streams",
+      "ok": true,
+      "status": 200,
+      "bytes": 114701,
+      "data_type": "list",
+      "items": 19
+    },
+    {
+      "tool": "equidia_tv_schedule",
+      "ok": true,
+      "status": 200,
+      "bytes": 33193,
+      "data_type": "list",
+      "items": 26
+    },
+    {
+      "tool": "equidia_get_mobile_race_quinte",
+      "ok": true,
+      "status": 200,
+      "bytes": 26119,
+      "data_type": "dict"
+    },
+    {
+      "tool": "equidia_get_mobile_races_by_highlight",
+      "ok": true,
+      "status": 200,
+      "bytes": 3302,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_get_tv_meetings",
+      "ok": true,
+      "status": 200,
+      "bytes": 12118,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_articles",
+      "ok": true,
+      "status": 200,
+      "bytes": 603,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_tags",
+      "ok": true,
+      "status": 200,
+      "bytes": 86,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_get_v2_categories",
+      "ok": true,
+      "status": 200,
+      "bytes": 73,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_get_tv_shows",
+      "ok": true,
+      "status": 200,
+      "bytes": 83886,
+      "data_type": "list",
+      "items": 14
+    },
+    {
+      "tool": "equidia_get_v2_meetings_by_guid",
+      "ok": true,
+      "status": 200,
+      "bytes": 14772,
+      "data_type": "dict"
+    },
+    {
+      "tool": "equidia_race",
+      "ok": true,
+      "status": 200,
+      "bytes": 32280,
+      "data_type": "dict"
+    },
+    {
+      "tool": "equidia_runners",
+      "ok": true,
+      "status": 200,
+      "bytes": 2711,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_get_mobile_runners_analyse",
+      "ok": true,
+      "status": 200,
+      "bytes": 1027,
+      "data_type": "list",
+      "items": 1
+    },
+    {
+      "tool": "equidia_get_v2_runners_by_uuid",
+      "ok": true,
+      "status": 200,
+      "bytes": 4652,
+      "data_type": "dict"
+    },
+    {
+      "tool": "equidia_horse",
+      "ok": true,
+      "status": 200,
+      "bytes": 16840,
+      "data_type": "dict"
+    },
+    {
+      "tool": "equidia_horse_stats",
+      "ok": true,
+      "status": 200,
+      "bytes": 252,
+      "data_type": "dict"
+    },
+    {
+      "tool": "equidia_get_mobile_runners_by_horse",
+      "ok": true,
+      "status": 200,
+      "bytes": 2324,
+      "data_type": "list",
+      "items": 1
+    }
+  ]
+}

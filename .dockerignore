@@ -1,0 +1,8 @@
+target
+dist
+.git
+.env
+.env.*
+*.pem
+*.key
+.cocoindex_code

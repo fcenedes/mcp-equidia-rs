@@ -1,0 +1,7 @@
+The transport, TLS, metrics and CLI architecture builds on mcp-gmap-rs
+(https://github.com/fcenedes/mcp-gmap-rs), used under the MIT license in LICENSE.
+
+api/openapi.json is an unmodified snapshot of Equidia's published API contract
+from https://apiv2.equidia.fr/api/docs.json, retrieved 2026-11-11. Equidia API
+content and associated media remain subject to their respective owners' rights.
+This project is an independent client and is not affiliated with Equidia.
