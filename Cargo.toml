@@ -11,7 +11,7 @@ license = "MIT"
 readme = "README.md"
 keywords = ["mcp", "equidia", "horse-racing", "cli"]
 categories = ["command-line-utilities", "api-bindings"]
-include = ["/src/**", "/api/**", "/docs/**", "/tests/**", "/scripts/**", "/deploy/**", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE", "/NOTICE", "/CHANGELOG.md", "/.env.example", "/Dockerfile", "/.dockerignore"]
+include = ["/src/**/*.rs", "/api/*.json", "/docs/*.md", "/docs/*.json", "/tests/**/*.rs", "/tests/*.py", "/scripts/*.py", "/deploy/*.yaml", "/Cargo.toml", "/Cargo.lock", "/README.md", "/LICENSE", "/NOTICE", "/CHANGELOG.md", "/.env.example", "/Dockerfile", "/.dockerignore"]
 
 [package.metadata.docs.rs]
 all-features = true

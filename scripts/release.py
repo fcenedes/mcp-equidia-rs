@@ -89,6 +89,8 @@ def audit_package(path=None):
                 raise ValueError("unsafe or duplicate package path")
             if name not in root_files and not name.startswith(("src/", "api/", "docs/", "tests/", "scripts/", "deploy/")):
                 raise ValueError(f"unexpected package file: {name}")
+            if "__pycache__" in parts or name.endswith((".pyc", ".pyo")):
+                raise ValueError("Python cache found in package")
             if any(p == ".env" or (p.startswith(".env.") and p != ".env.example") or p.endswith((".pem", ".key")) or p in {"credentials.json", "sa_key.json"} for p in parts):
                 raise ValueError("credential file found in package")
             if name == ".env.example":

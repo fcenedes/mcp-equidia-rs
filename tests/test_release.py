@@ -41,7 +41,7 @@ class ReleaseChecks(unittest.TestCase):
     def test_package_audit_rejects_credentials_traversal_and_links(self):
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "bad.crate"
-            for name, linked in [("api/.env", False), ("../escape", False), ("src/link", True)]:
+            for name, linked in [("api/.env", False), ("scripts/__pycache__/cache.pyc", False), ("../escape", False), ("src/link", True)]:
                 with self.subTest(name=name):
                     with tarfile.open(path, "w:gz") as archive:
                         member = tarfile.TarInfo(f"{release.NAME}-{release.VERSION}/{name}")

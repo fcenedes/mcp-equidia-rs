@@ -2,9 +2,9 @@
 
 The project is prepared for the repository `fcenedes/mcp-equidia-rs`, the GHCR
 image `ghcr.io/fcenedes/mcp-equidia-rs`, and the crate `mcp-equidia-rs`.
-These are intended publication locations. Preparing this repository does not
-make the image or crate publicly available; a first publication is still needed.
-Crate-name availability must be confirmed with crates.io before that publication.
+The workflows below publish versioned artifacts to those locations. Check the
+GitHub release and registry version before pulling or installing a specific
+version; a source push alone does not publish a crate.
 
 ## Local artifacts
 
