@@ -2,6 +2,8 @@
 
 [Release and publishing guide](docs/release.md) · [Tool reference](docs/tools.md) · [Test evidence](docs/testing.md)
 
+[v0.1.0 downloads](https://github.com/fcenedes/mcp-equidia-rs/releases/tag/v0.1.0) · [crates.io](https://crates.io/crates/mcp-equidia-rs) · [docs.rs](https://docs.rs/mcp-equidia-rs) · [Docker image](https://github.com/users/fcenedes/packages/container/package/mcp-equidia-rs)
+
 A **read-only Equidia API MCP server and CLI**, built in Rust using the same
 catalogue, transport and deployment approach as [mcp-gmap-rs](https://github.com/fcenedes/mcp-gmap-rs).
 
@@ -21,6 +23,15 @@ exposed before their anonymous access has been reviewed.
 ## Build and run
 
 Requires Rust 1.88 or later.
+
+Install the published CLI:
+
+```sh
+cargo install mcp-equidia-rs --version 0.1.0 --locked
+mcp-equidia-rs doctor
+```
+
+Or build from a source checkout:
 
 ```sh
 cargo build --release --locked
@@ -194,10 +205,15 @@ updates. API freshness and completeness are controlled by Equidia.
 
 ## Docker
 
-Versioned local images and a portable two-platform OCI archive are prepared for
-distribution. GHCR publishing, native binary releases, crates.io publishing and
-docs.rs builds are configured in the [release guide](docs/release.md). Registry
-URLs there become usable after the first publication.
+The public GHCR image supports `linux/amd64` and `linux/arm64`:
+
+```sh
+docker pull ghcr.io/fcenedes/mcp-equidia-rs:0.1.0
+docker run --rm -i ghcr.io/fcenedes/mcp-equidia-rs:0.1.0 serve stdio
+```
+
+Native binary archives, a portable OCI archive and publishing automation are
+described in the [release guide](docs/release.md). To build the image locally:
 
 ```sh
 docker build -t mcp-equidia-rs .
@@ -211,7 +227,7 @@ MCP_HTTP_TOKEN='replace-with-your-token' docker compose -f deploy/compose.yaml u
 The container runs as UID 10001. For stdio, use
 `docker run --rm -i mcp-equidia-rs serve stdio` without publishing a port.
 
-After publishing, `deploy/compose.image.yaml` pulls the versioned GHCR image;
+`deploy/compose.image.yaml` pulls the versioned GHCR image;
 `deploy/compose.yaml` builds the local source. Set `EQUIDIA_IMAGE` to pin a
 different version or digest when using the image-based file.
 
